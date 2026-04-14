@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search Results - The Archivist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#00557a",
+                    "secondary-container": "#fe8a80",
+                    "surface-variant": "#e4e2e0",
+                    "surface-container-highest": "#e4e2e0",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#006e9d",
+                    "secondary-fixed-dim": "#ffb4ac",
+                    "surface-container-high": "#eae8e6",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f5f3f1",
+                    "on-tertiary-fixed": "#001e2f",
+                    "surface-dim": "#dbdad8",
+                    "surface-container": "#efedec",
+                    "on-primary-container": "#ffe0dd",
+                    "on-primary-fixed": "#410003",
+                    "on-surface": "#1b1c1b",
+                    "tertiary-fixed": "#c8e6ff",
+                    "on-tertiary-container": "#d1eaff",
+                    "on-background": "#1b1c1b",
+                    "on-tertiary-fixed-variant": "#004c6e",
+                    "on-secondary-fixed": "#410003",
+                    "secondary": "#9e403a",
+                    "inverse-on-surface": "#f2f0ee",
+                    "background": "#fbf9f7",
+                    "inverse-surface": "#30302f",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb4ac",
+                    "secondary-fixed": "#ffdad6",
+                    "outline": "#8f706c",
+                    "on-surface-variant": "#5b403d",
+                    "tertiary-fixed-dim": "#88ceff",
+                    "primary-container": "#c62828",
+                    "on-secondary-container": "#75221e",
+                    "inverse-primary": "#ffb4ac",
+                    "surface-tint": "#b91d20",
+                    "primary": "#a20513",
+                    "surface": "#fbf9f7",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#e4beba",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fbf9f7",
+                    "on-secondary-fixed-variant": "#7f2924",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#93000e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background-color: rgba(251, 249, 247, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 glass-nav">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<a class="text-2xl font-serif italic text-stone-900 dark:text-stone-50 font-['Newsreader'] italic tracking-tight" href="#">The Archivist</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#c62828] transition-colors duration-300" href="#">World</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#c62828] transition-colors duration-300" href="#">Politics</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#c62828] transition-colors duration-300" href="#">Culture</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#c62828] transition-colors duration-300" href="#">Opinion</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#c62828] transition-colors duration-300" href="#">Science</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-600 hover:text-[#c62828] transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-semibold tracking-wide hover:opacity-90 transition-all duration-300">Subscribe</button>
+</div>
+</div>
+<div class="bg-stone-100 dark:bg-stone-900 h-px w-full opacity-30"></div>
+</header>
+<main class="max-w-screen-2xl mx-auto px-8 py-12">
+<!-- Search Hero Section -->
+<section class="mb-16">
+<h1 class="font-headline text-5xl md:text-7xl italic text-on-surface mb-8 max-w-3xl leading-tight">
+                Explore the <span class="text-primary">Archives</span>
+</h1>
+<div class="relative max-w-4xl">
+<div class="flex flex-col md:flex-row gap-4 p-2 bg-surface-container-low rounded-2xl shadow-sm">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 pl-12 py-4 text-lg font-body placeholder:text-on-surface-variant/50" placeholder="Search articles, authors, or topics..." type="text" value="Modern Architecture"/>
+</div>
+<div class="h-10 w-px bg-outline-variant/20 self-center hidden md:block"></div>
+<select class="bg-transparent border-none focus:ring-0 py-4 px-6 font-semibold text-on-surface-variant appearance-none cursor-pointer">
+<option>All Categories</option>
+<option>Culture</option>
+<option>Architecture</option>
+<option>Design</option>
+<option>Technology</option>
+</select>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold hover:shadow-lg transition-all active:scale-95">
+                        Search
+                    </button>
+</div>
+</div>
+</section>
+<!-- Results Header -->
+<div class="flex items-baseline justify-between mb-12">
+<h2 class="font-headline text-2xl italic">Showing 1,248 results for 'Modern Architecture'</h2>
+<div class="flex gap-4">
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant">Sort by:</span>
+<button class="text-sm font-bold text-primary flex items-center gap-1">Newest <span class="material-symbols-outlined text-sm">expand_more</span></button>
+</div>
+</div>
+<!-- Bento Grid Results -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24">
+<!-- Featured Result -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative aspect-[16/9] overflow-hidden rounded-[24px] mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern glass skyscraper facade reflecting a clear blue sky with sharp geometric lines and minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK7UIy2VvB88g3wW-F6WJhZnN4CMFOI408g4KJcXKGCrAMq_OICV51etZb_Xo0iFaTgykT75JkVVo3DQMazl41nD98LE52quXYv519JUhoJdzOX7nD7vUHGrSvPJgzWfjd8zKNHYyQWCGudp6-9w1Kryh6LbIWJnvQcbe2HlMRwjVRIePe8Asg_Sb0fPC1mprIdWWOXxPJ_CxnRNAcHb3uam0VzImfAQ6MPJs9B36Aig0968dp-TWXjDyji-M6WgPnEft83z1aJCKp"/>
+<div class="absolute bottom-6 left-6 bg-surface p-6 rounded-2xl glass-nav max-w-md shadow-2xl">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-primary font-bold mb-2 block">Architecture</span>
+<h3 class="font-headline text-3xl italic mb-3">The Brutalist Revival: Concrete as a Canvas</h3>
+<p class="text-on-surface-variant line-clamp-2">How contemporary designers are reimagining the raw textures and bold forms of mid-century brutalism for a new generation of urban living.</p>
+</div>
+</div>
+</div>
+<!-- Side Result 1 -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="bg-surface-container-low rounded-[24px] p-6 h-full flex flex-col hover:bg-surface-container-high transition-colors">
+<div class="aspect-square overflow-hidden rounded-xl mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Interior of a minimalist modern villa with large floor-to-ceiling windows and warm sunlight spilling onto concrete floors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-hMzVERi7AVUk_D5xNWAfPY3ejc0UjADthGsVQz5rHiilXIu8bnVxvL65VvtbHmAr7nZ_JFaQXe8RsUaZk3ncSVLZfV99QcMXn_8r6pEUiM4BrBuyPEE2fYIVAmT_E8KeWgxFldBrNL-jxeDNinhHz3kyzmwtXegvC6vKngy5dTM8TB6o9kMGW6yXGcrRnLRE9Kqa4deSstCPKqp_xV4vQ5yJKafN0iKrFtimkDaQCu0NWh5H9W0JdRQwki7i8YCBXuNGTmqC0FTB"/>
+</div>
+<span class="text-xs font-label uppercase tracking-[0.2em] text-on-surface-variant font-bold mb-2 block">Interior Design</span>
+<h3 class="font-headline text-xl italic mb-3">Light and Space: The Curatorial Home</h3>
+<p class="text-sm text-on-surface-variant line-clamp-3">Exploring the intersection of residential architecture and art gallery design.</p>
+</div>
+</div>
+<!-- Standard Result 1 -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full aspect-video object-cover" data-alt="Sleek white spiral staircase in a contemporary building with dramatic shadows and minimalist lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS58XoJnO83MMf9iEXrY_AXHU4mPp1oAiBF2T4F7PYHWuZ3t-LMaPWsZXT01ZlnR-GeDwHotjbmjXlUvBTOj4mYIPo-q55wYGrxhX9t1HDlRBreFuZDM4NBgPRelEir80Spr7SY1UKk-eJqWraGRcdhp_4yn22XR3F4yjBZFMgAQmgI9y-vyLNSexcsCAj6htbMgUlvKKyAifmIeuqADuaPQN2ZRthd4aLSrCRZUwpTX0w2uCJVQsRbe_scaSDqPhFehWtZkkFxGyA"/>
+<div class="p-6">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-on-surface-variant font-bold mb-2 block">Curation</span>
+<h3 class="font-headline text-xl italic mb-3">The Geometry of Silence</h3>
+<div class="flex items-center gap-3 mt-4">
+<div class="w-8 h-8 rounded-full bg-stone-200"></div>
+<span class="text-xs font-bold text-on-surface">By Elena Vance</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Standard Result 2 -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full aspect-video object-cover" data-alt="Modern open-plan office space with plants, wooden textures, and soft natural light through large windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzPEAGe8Kk5EGwyTB7fD2qzArur8c0iSMpiizHgHz05CdWv5WH3G8DvBlQSKA62ivi5LRJIcgupYOMiiEKp5qsBzJFwCDP82GaLslwJziLJpXEHGWpMRjQLnd6-H7F7ysxqfoT0pcBXokCpb2q6febQH-jvtQ1_EYcRvYIxOd_y2H4owokpj1CbxSUgx6LXt087qJ_F9EGgVTDgOiSOZyYvf3Njc0Z53o65kOluBCVR5MGBSr5RgGZrvEZTcIKwX3zzz74PVfq8GVi"/>
+<div class="p-6">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-on-surface-variant font-bold mb-2 block">Workspace</span>
+<h3 class="font-headline text-xl italic mb-3">Post-Industrial Workspaces</h3>
+<div class="flex items-center gap-3 mt-4">
+<div class="w-8 h-8 rounded-full bg-stone-200"></div>
+<span class="text-xs font-bold text-on-surface">By Julian Thorne</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Standard Result 3 -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img class="w-full aspect-video object-cover" data-alt="Abstract architectural detail of a metal building with repeating patterns and soft golden hour reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ2APxq71j5hAerRYq52FmDpHVR491FIVdEbeyFrq0449XU7B3okiberm_IX0lW_Zg2OGDVn1k35U9NzAa3PqSAiTQ7bXoz9mvD9HIDpmCRb0Da9jstYyg5R6fQyp-7oWJgwu_pZ3JjzMl0AIIjP8zD86JrJauY8a-SSvZ63Pym5jxhNzXPVkuGDCFXpVU5cWG9eabmCzXAlP6N4rrXcQTsEOUtdX60_p-g3WopL0Tii72cq6u8kGXenW1jVICOwn5YJKzHlkjNfHp"/>
+<div class="p-6">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-on-surface-variant font-bold mb-2 block">Materials</span>
+<h3 class="font-headline text-xl italic mb-3">Steel, Glass, and Soul</h3>
+<div class="flex items-center gap-3 mt-4">
+<div class="w-8 h-8 rounded-full bg-stone-200"></div>
+<span class="text-xs font-bold text-on-surface">By Sarah Jenkins</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Skeleton State (Visual Guide) -->
+<div class="mb-24">
+<div class="flex items-center gap-2 mb-8">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<h3 class="font-label text-xs uppercase tracking-widest font-bold text-on-surface-variant">Loading State</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="animate-pulse">
+<div class="bg-surface-container-high rounded-[24px] aspect-video mb-4"></div>
+<div class="h-4 bg-surface-container-high rounded-full w-24 mb-4"></div>
+<div class="h-8 bg-surface-container-high rounded-full w-full mb-2"></div>
+<div class="h-8 bg-surface-container-high rounded-full w-3/4"></div>
+</div>
+<div class="animate-pulse">
+<div class="bg-surface-container-high rounded-[24px] aspect-video mb-4"></div>
+<div class="h-4 bg-surface-container-high rounded-full w-24 mb-4"></div>
+<div class="h-8 bg-surface-container-high rounded-full w-full mb-2"></div>
+<div class="h-8 bg-surface-container-high rounded-full w-3/4"></div>
+</div>
+<div class="animate-pulse">
+<div class="bg-surface-container-high rounded-[24px] aspect-video mb-4"></div>
+<div class="h-4 bg-surface-container-high rounded-full w-24 mb-4"></div>
+<div class="h-8 bg-surface-container-high rounded-full w-full mb-2"></div>
+<div class="h-8 bg-surface-container-high rounded-full w-3/4"></div>
+</div>
+</div>
+</div>
+<!-- Empty State -->
+<div class="bg-surface-container-low rounded-[24px] py-24 px-8 text-center flex flex-col items-center">
+<div class="w-24 h-24 rounded-full bg-surface-variant flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant">find_in_page</span>
+</div>
+<h3 class="font-headline text-4xl italic mb-4">No results for 'Mars Colony 2024'</h3>
+<p class="text-on-surface-variant max-w-md mx-auto text-lg mb-8">It seems our archives don't contain that specific thread yet. Try broadening your search or exploring one of our suggested topics.</p>
+<div class="flex flex-wrap justify-center gap-3">
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface text-sm font-bold hover:bg-primary hover:text-on-primary transition-colors">Urbanism</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface text-sm font-bold hover:bg-primary hover:text-on-primary transition-colors">Sustainability</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface text-sm font-bold hover:bg-primary hover:text-on-primary transition-colors">Bio-Design</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-stone-900 full-width py-12 px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 w-full max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-2">
+<span class="text-lg font-serif italic text-stone-800 dark:text-stone-200 font-['Newsreader']">The Archivist</span>
+<p class="font-['Manrope'] text-sm tracking-wide uppercase text-stone-500 dark:text-stone-400">© 2024 The Archivist. All rights reserved.</p>
+</div>
+<nav class="flex flex-wrap justify-center gap-8">
+<a class="font-['Manrope'] text-sm tracking-wide uppercase text-stone-500 dark:text-stone-400 hover:underline decoration-[#c62828] underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-['Manrope'] text-sm tracking-wide uppercase text-stone-500 dark:text-stone-400 hover:underline decoration-[#c62828] underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Manrope'] text-sm tracking-wide uppercase text-stone-500 dark:text-stone-400 hover:underline decoration-[#c62828] underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Editorial Standards</a>
+<a class="font-['Manrope'] text-sm tracking-wide uppercase text-stone-500 dark:text-stone-400 hover:underline decoration-[#c62828] underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Contact</a>
+</nav>
+</div>
+</footer>
+</body></html>
