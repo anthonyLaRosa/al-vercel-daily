@@ -1,5 +1,6 @@
-import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { icons } from "lucide-react";
+import Link from "next/link";
 import type React from "react";
 import { cn } from "../lib/utils";
 
@@ -33,23 +34,41 @@ const buttonVariants = cva(
   },
 );
 
+interface ButtonProps
+  extends React.ComponentProps<"button">,
+    VariantProps<typeof buttonVariants> {
+  href?: string;
+  icon?: keyof typeof icons;
+  iconPosition?: "left" | "right";
+}
+
 function Button({
   className,
   variant,
   size,
-  asChild = false,
+  href,
+  icon,
+  iconPosition = "left",
+  children,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
-  const Comp = asChild ? Slot : "button";
+}: ButtonProps) {
+  const Icon = icon ? icons[icon] : null;
+  const iconLeft = Icon && iconPosition === "left" && <Icon className="h-4 w-4" />;
+  const iconRight = Icon && iconPosition === "right" && <Icon className="h-4 w-4" />;
+  const sharedClass = cn(buttonVariants({ variant, size, className }));
+
+  if (href) {
+    return (
+      <Link href={href} className={sharedClass}>
+        {iconLeft}{children}{iconRight}
+      </Link>
+    );
+  }
 
   return (
-    <Comp
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
+    <button className={sharedClass} {...props}>
+      {iconLeft}{children}{iconRight}
+    </button>
   );
 }
 

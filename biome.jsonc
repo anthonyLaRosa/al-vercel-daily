@@ -1,4 +1,46 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
-  "extends": ["ultracite"]
+  "extends": ["ultracite"],
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "trailingCommas": "all"
+    }
+  },
+  "linter": {
+    "rules": {
+      "nursery": {
+        // Tailwind 4 usa @source — non è un at-rule sconosciuto
+        "noUnknownAtRule": "off",
+        // L'ordine delle classi Tailwind è spesso intenzionale per leggibilità
+        "useSortedClasses": "off"
+      },
+      "suspicious": {
+        // Next.js richiede `async rewrites()` anche senza await
+        "useAwait": "off",
+        // I blocchi API sono statici e non si riordinano mai
+        "noArrayIndexKey": "off"
+      },
+      "performance": {
+        // Il pacchetto UI è framework-agnostic, non usa Next.js <Image>
+        "noImgElement": "off"
+      },
+      "style": {
+        // camelCase è comune in React (es. getQueryClient, TanstackQuery)
+        "useFilenamingConvention": "off"
+      }
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        // L'ordine dei props JSX è semantico, non alfabetico
+        "useSortedAttributes": "off"
+      }
+    }
+  }
 }
