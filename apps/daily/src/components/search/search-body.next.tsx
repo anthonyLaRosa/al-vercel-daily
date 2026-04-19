@@ -39,6 +39,7 @@ export async function SearchBodyNext({
           title={article.title}
           excerpt={article.excerpt}
           badge={<Badge>{article.category}</Badge>}
+          href={`/articles/${article.slug}`}
         />
       ))}
     </SearchLayout.Results>

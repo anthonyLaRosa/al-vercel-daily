@@ -8,7 +8,7 @@ import {
   SearchBarSelect,
 } from "@repo/ui/molecules/search-bar";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 
 export function SearchContainerNext({
   category,
@@ -20,6 +20,7 @@ export function SearchContainerNext({
   options: LabelValue[];
 }) {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const [queryValue, setQueryValue] = useState<string>(query || "");
   const [categoryValue, setCategoryValue] = useState(category || "all");
 
@@ -30,19 +31,21 @@ export function SearchContainerNext({
         onChange={(e) => setQueryValue(e.target.value)}
         name="query"
       />
-
       <SearchBarSelect
         value={categoryValue}
-        onValueChange={(value) => {
-          setCategoryValue(value);
-        }}
+        onValueChange={(value) => setCategoryValue(value)}
         options={options}
       />
       <SearchBarButton
+        disabled={isPending}
         onClick={() =>
-          router.push(`/search?query=${queryValue}&category=${categoryValue}`)
+          startTransition(() =>
+            router.push(`/search?query=${queryValue}&category=${categoryValue}`)
+          )
         }
-      />
+      >
+        {isPending ? "Searching..." : "Search"}
+      </SearchBarButton>
     </SearchBar>
   );
 }

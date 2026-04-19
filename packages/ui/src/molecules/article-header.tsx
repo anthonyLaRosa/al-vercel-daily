@@ -19,7 +19,7 @@ function ArticleHeader({
   className,
 }: ArticleHeaderProps) {
   return (
-    <header className={cn("mx-auto max-w-3xl space-y-6", className)}>
+    <header className={cn("mx-auto flex flex-col gap-4", className)}>
       {meta && <div className="flex flex-wrap items-center gap-3">{meta}</div>}
       <div>{title}</div>
       {subtitle && <div>{subtitle}</div>}

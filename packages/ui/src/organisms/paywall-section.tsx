@@ -32,7 +32,7 @@ PaywallSection.Gate = function PaywallSectionGate({
   return (
     <div
       className={cn(
-        "absolute right-0 bottom-0 left-0 flex justify-center px-6 pb-8",
+        "absolute right-0 bottom-10 left-0 flex justify-center",
         className,
       )}
       {...props}

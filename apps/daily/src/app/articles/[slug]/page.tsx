@@ -11,6 +11,7 @@ import { CardsGrid } from "@repo/ui/organisms/cards-grid";
 import { ArticleBodyNext } from "@/components/article/article-body.next";
 import { TrendingArticlesNext } from "@/components/article/trending-articles.next";
 import { getArticleDetails } from "@/services/server-side/get-article-details";
+import { ShareButtonNext } from "@/components/article/share-button.next";
 
 export interface ArticleDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -35,7 +36,7 @@ export default async function ArticleDetailPage({
         <ArticleHeader
           meta={
             <>
-              <Badge>{category}</Badge>
+              <Badge variant="category">{category}</Badge>
               <Label color="muted">Published at {publishedAt}</Label>
             </>
           }
@@ -45,27 +46,38 @@ export default async function ArticleDetailPage({
             </Headline>
           }
           author={<AuthorCard name={author?.name || ""} />}
-          actions={<Button>Share</Button>}
+          actions={<ShareButtonNext />}
         />
       </ArticleBody.Header>
 
       <ArticleBody.Hero>
         <HeroPlate
-          src={image}
-          className="aspect-[21/9] rounded-gallery"
-          alt={title}
-          fill
+          imageProps={{
+            src: image,
+            alt: title,
+            fill: true,
+          }}
+          className="aspect-[16/9] rounded-gallery"
+          caption={<Label color="muted">{tags?.join(", ")}</Label>}
         />
       </ArticleBody.Hero>
 
-      <ArticleBody.Layout>
-        <ArticleBodyNext content={content} />
-      </ArticleBody.Layout>
+      <ArticleBodyNext content={content} />
+
       <CardsGrid>
         <CardsGrid.Header>
           <SectionHeader
             title="Trending Now"
-            actions={<Button variant="ghost">See all</Button>}
+            actions={
+              <Button
+                variant="ghost"
+                icon="ArrowRight"
+                iconPosition="right"
+                href="/search"
+              >
+                See all
+              </Button>
+            }
           />
         </CardsGrid.Header>
         <CardsGrid.Items columns={3}>

@@ -7,10 +7,7 @@ function ArticleBody({
   ...props
 }: React.ComponentProps<"article">) {
   return (
-    <article
-      className={cn("mx-auto max-w-7xl px-6 py-12", className)}
-      {...props}
-    >
+    <article className={cn("flex flex-col gap-8", className)} {...props}>
       {children}
     </article>
   );
@@ -20,23 +17,14 @@ ArticleBody.Header = function ArticleBodyHeader({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn("mb-12", className)} {...props} />;
+  return <div className={cn("px-36", className)} {...props} />;
 };
 
 ArticleBody.Hero = function ArticleBodyHero({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn("-mx-6 mb-12", className)} {...props} />;
-};
-
-ArticleBody.Layout = function ArticleBodyLayout({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div className={cn("grid grid-cols-12 gap-12", className)} {...props} />
-  );
+  return <div className={cn("", className)} {...props} />;
 };
 
 ArticleBody.Content = function ArticleBodyContent({
@@ -44,13 +32,7 @@ ArticleBody.Content = function ArticleBodyContent({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div
-      className={cn(
-        "col-span-12 space-y-6 font-body text-base text-on-surface leading-[1.6]",
-        className,
-      )}
-      {...props}
-    />
+    <div className={cn("flex flex-col gap-4 px-36", className)} {...props} />
   );
 };
 

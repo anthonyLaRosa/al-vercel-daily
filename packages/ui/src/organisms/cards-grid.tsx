@@ -7,10 +7,7 @@ function CardsGrid({
   ...props
 }: React.ComponentProps<"section">) {
   return (
-    <section
-      className={cn("mx-auto max-w-7xl space-y-8 px-6 py-12", className)}
-      {...props}
-    >
+    <section className={cn("flex flex-col gap-6", className)} {...props}>
       {children}
     </section>
   );

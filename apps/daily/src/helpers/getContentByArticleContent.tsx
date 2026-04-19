@@ -5,6 +5,7 @@ import { Pullquote } from "@repo/ui/atoms/typography/pullquote";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import type { ArticleContent } from "@/services/server-side/get-list-articles";
+import { ArticleBody } from "@repo/ui/organisms/article-body";
 
 export function getContentByArticleContent({
   blocks,
@@ -12,7 +13,7 @@ export function getContentByArticleContent({
   blocks: ArticleContent;
 }) {
   return (
-    <article>
+    <ArticleBody.Content>
       {blocks.map((block, i) => {
         const key = `${block.type}-${i}`;
         switch (block.type) {
@@ -80,6 +81,6 @@ export function getContentByArticleContent({
             return null;
         }
       })}
-    </article>
+    </ArticleBody.Content>
   );
 }
