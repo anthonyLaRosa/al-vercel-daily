@@ -1,5 +1,6 @@
 import { Button } from "@repo/ui/atoms/button";
 import { SectionHeader } from "@repo/ui/molecules/section-header";
+import { SkeletonEditorialGrid } from "@repo/ui/organisms/skeleton-editorial-grid";
 import { Suspense } from "react";
 import { FeaturedArticlesNext } from "@/components/featured-articles.next";
 import { HeroBannerNext } from "@/components/hero-banner.next";
@@ -18,7 +19,7 @@ export default function HomePage() {
           </Button>
         }
       />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<SkeletonEditorialGrid />}>
         <FeaturedArticlesNext />
       </Suspense>
     </>

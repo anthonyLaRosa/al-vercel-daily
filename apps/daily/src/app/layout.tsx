@@ -19,13 +19,13 @@ export default function RootLayout({
     <html lang="en">
       <Providers>
         <body>
-        <div className="container mx-auto px-4">
-          <HeaderNext />
-          <main className="flex flex-col gap-12 px-8 pt-6 pb-12">
-            {children}
-          </main>
-          <FooterNext />
-        </div>
+          <div className="mx-auto w-full xl:max-w-[1440px]">
+            <HeaderNext />
+            <main className="flex flex-col gap-12 px-4 md:px-8 pt-6 pb-12">
+              {children}
+            </main>
+            <FooterNext />
+          </div>
         </body>
       </Providers>
     </html>

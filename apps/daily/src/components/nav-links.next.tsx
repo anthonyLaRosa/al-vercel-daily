@@ -1,8 +1,11 @@
 import { NavLinks } from "@repo/ui/molecules/nav-links";
-import { SiteNav } from "@repo/ui/organisms/site-nav";
 import { getCategories } from "@/services/server-side/get-categories";
 
-export async function NavLinksNext() {
+export async function NavLinksNext({
+  orientation = "horizontal",
+}: {
+  orientation?: "horizontal" | "vertical";
+}) {
   const categories = await getCategories();
 
   const navItems = categories?.data
@@ -14,9 +17,5 @@ export async function NavLinksNext() {
         }))
     : [];
 
-  return (
-    <SiteNav.Nav>
-      <NavLinks items={navItems} />
-    </SiteNav.Nav>
-  );
+  return <NavLinks items={navItems} orientation={orientation} />;
 }

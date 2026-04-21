@@ -17,7 +17,7 @@ ArticleBody.Header = function ArticleBodyHeader({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn("px-36", className)} {...props} />;
+  return <div className={cn("mx-auto w-full max-w-2xl px-4", className)} {...props} />;
 };
 
 ArticleBody.Hero = function ArticleBodyHero({
@@ -32,7 +32,7 @@ ArticleBody.Content = function ArticleBodyContent({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className={cn("flex flex-col gap-4 px-36", className)} {...props} />
+    <div className={cn("mx-auto flex w-full max-w-2xl flex-col gap-4 px-4", className)} {...props} />
   );
 };
 
@@ -43,7 +43,7 @@ ArticleBody.Sidebar = function ArticleBodySidebar({
   return (
     <aside
       className={cn(
-        "sticky top-24 col-span-12 space-y-8 self-start lg:col-span-4",
+        "sticky top-24 col-span-12 space-y-8 self-start xl:col-span-4",
         className,
       )}
       {...props}

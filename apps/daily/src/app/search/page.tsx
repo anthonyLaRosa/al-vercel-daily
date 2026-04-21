@@ -1,5 +1,7 @@
 import { Headline } from "@repo/ui/atoms/typography/headline";
+import { SkeletonSearchBar } from "@repo/ui/molecules/skeleton-search-bar";
 import { SearchLayout } from "@repo/ui/organisms/search-layout";
+import { SkeletonSearchResults } from "@repo/ui/organisms/skeleton-search-results";
 import { Suspense } from "react";
 import { SearchBodyNext } from "@/components/search/search-body.next";
 import type { Category } from "@/services/server-side/get-list-articles";
@@ -13,7 +15,21 @@ export default async function SearchPageWrapper({
   searchParams,
 }: SearchPageProps) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <SearchLayout>
+          <SearchLayout.Header>
+            <Headline as="h1" size="headline-lg">
+              Explore the Archives
+            </Headline>
+            <SkeletonSearchBar />
+          </SearchLayout.Header>
+          <SearchLayout.Grid>
+            <SkeletonSearchResults />
+          </SearchLayout.Grid>
+        </SearchLayout>
+      }
+    >
       <SearchPage searchParams={searchParams} />
     </Suspense>
   );
@@ -28,14 +44,14 @@ async function SearchPage({ searchParams }: SearchPageProps) {
         <Headline as="h1" size="headline-lg">
           Explore the Archives
         </Headline>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<SkeletonSearchBar />}>
           <SearchContainerServerNext category={category} query={query} />
         </Suspense>
       </SearchLayout.Header>
       <SearchLayout.Grid>
         <Suspense
           key={`${query}-${category}`}
-          fallback={<div>Loading Search Results...</div>}
+          fallback={<SkeletonSearchResults />}
         >
           <SearchBodyNext query={query} category={category} />
         </Suspense>

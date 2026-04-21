@@ -36,7 +36,7 @@ SearchLayout.Featured = function SearchLayoutFeatured({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className={cn("col-span-12 lg:col-span-8", className)} {...props} />
+    <div className={cn("col-span-12 xl:col-span-8", className)} {...props} />
   );
 };
 
@@ -46,7 +46,7 @@ SearchLayout.Side = function SearchLayoutSide({
 }: React.ComponentProps<"aside">) {
   return (
     <aside
-      className={cn("col-span-12 flex flex-col gap-4 lg:col-span-4", className)}
+      className={cn("col-span-12 flex flex-col gap-4 xl:col-span-4", className)}
       {...props}
     />
   );
@@ -59,7 +59,7 @@ SearchLayout.Results = function SearchLayoutResults({
   return (
     <div
       className={cn(
-        "col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
+        "col-span-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3",
         className,
       )}
       {...props}

@@ -7,7 +7,7 @@ function HeroSection({
   ...props
 }: React.ComponentProps<"section">) {
   return (
-    <section className={cn("relative", className)} {...props}>
+    <section className={cn("flex flex-col md:relative", className)} {...props}>
       {children}
     </section>
   );
@@ -26,7 +26,7 @@ HeroSection.Overlay = function HeroSectionOverlay({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn("absolute bottom-6 left-6 z-10 max-w-lg", className)}
+      className={cn("px-4 py-4 md:absolute md:bottom-6 md:left-6 md:z-10 md:max-w-lg md:px-0 md:py-0", className)}
       {...props}
     />
   );

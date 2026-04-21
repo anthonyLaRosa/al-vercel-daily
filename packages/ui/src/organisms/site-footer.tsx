@@ -20,7 +20,7 @@ SiteFooter.Inner = function SiteFooterInner({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn("px-8 py-6", className)} {...props} />;
+  return <div className={cn("px-4 md:px-8 py-6", className)} {...props} />;
 };
 
 SiteFooter.Brand = function SiteFooterBrand({
@@ -58,7 +58,7 @@ SiteFooter.Bottom = function SiteFooterBottom({
   return (
     <div
       className={cn(
-        "flex flex-col items-start justify-between gap-4 border-inverse-on-surface/20 border-t pt-2 sm:flex-row sm:items-center",
+        "flex flex-col items-start justify-between gap-4 border-inverse-on-surface/20 border-t pt-2 md:flex-row md:items-center",
         className,
       )}
       {...props}

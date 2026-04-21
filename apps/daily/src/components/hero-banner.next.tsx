@@ -14,7 +14,7 @@ export function HeroBannerNext() {
             alt: "Hero",
             fill: true,
           }}
-          className="aspect-[30/9] rounded-gallery"
+          className="aspect-[16/9] rounded-gallery md:aspect-[30/9]"
         />
       </HeroSection.Plate>
       <HeroSection.Overlay>

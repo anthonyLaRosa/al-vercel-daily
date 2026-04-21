@@ -26,7 +26,7 @@ SiteNav.Bar = function SiteNavBar({
   return (
     <div
       className={cn(
-        "flex h-16 items-center gap-8 px-8 justify-between",
+        "flex h-16 items-center gap-8 px-4 md:px-8 justify-between",
         className,
       )}
       {...props}
