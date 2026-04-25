@@ -4,6 +4,11 @@ import { SkeletonEditorialGrid } from "@repo/ui/organisms/skeleton-editorial-gri
 import { Suspense } from "react";
 import { FeaturedArticlesNext } from "@/components/featured-articles.next";
 import { HeroBannerNext } from "@/components/hero-banner.next";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 export default function HomePage() {
   return (
@@ -14,7 +19,12 @@ export default function HomePage() {
         description="A curated selection of the day's most profound investigations and
             cultural observations."
         actions={
-          <Button variant="ghost" icon="ArrowRight" iconPosition="right">
+          <Button
+            variant="ghost"
+            icon="ArrowRight"
+            iconPosition="right"
+            href="/search"
+          >
             See all
           </Button>
         }

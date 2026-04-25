@@ -21,7 +21,9 @@ function SectionHeader({
       className={cn("flex items-center justify-between gap-4", className)}
     >
       <div>
-        <Headline as="h2">{title}</Headline>
+        <Headline as="h2" italic>
+          {title}
+        </Headline>
         {description && <BodyText size="md">{description}</BodyText>}
       </div>
       {actions && (

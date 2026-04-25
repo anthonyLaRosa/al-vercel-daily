@@ -4,11 +4,20 @@ import "./globals.css";
 import { FooterNext } from "@/components/footer-next";
 import { HeaderNext } from "@/components/header.next";
 import Providers from "@/hooks/TanstackQuery";
+import { getConfiguration } from "@/services/server-side/get-configuration";
 
-export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_APP_NAME || "Vercel Academy Foundation - Web",
-  description: "VAF Web",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const configuration = await getConfiguration();
+
+  return {
+    title: {
+      default: configuration.data?.seo.defaultTitle || "The Archivist",
+      template: configuration.data?.seo.titleTemplate || "%s | The Archivist",
+    },
+    description:
+      configuration.data?.seo.defaultDescription || "The Archivist daily news",
+  };
+}
 
 export default function RootLayout({
   children,

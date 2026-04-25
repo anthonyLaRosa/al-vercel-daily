@@ -12,6 +12,21 @@ import { ArticleBodyNext } from "@/components/article/article-body.next";
 import { TrendingArticlesNext } from "@/components/article/trending-articles.next";
 import { getArticleDetails } from "@/services/server-side/get-article-details";
 import { ShareButtonNext } from "@/components/article/share-button.next";
+import dayjs from "dayjs";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getArticleDetails(slug);
+
+  return {
+    title: product.data?.title || "Article",
+  };
+}
 
 export interface ArticleDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -37,7 +52,7 @@ export default async function ArticleDetailPage({
           meta={
             <>
               <Badge variant="category">{category}</Badge>
-              <Label color="muted">Published at {publishedAt}</Label>
+              <Label color="muted">Published at {dayjs(publishedAt).format("MMMM D, YYYY")}</Label>
             </>
           }
           title={

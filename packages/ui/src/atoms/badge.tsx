@@ -7,11 +7,9 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        category:
-          "rounded-soft bg-primary/10 px-2.5 py-0.5 text-primary text-xs uppercase tracking-widest",
-        tag: "rounded-soft bg-surface-container px-2.5 py-0.5 text-on-surface-variant text-xs",
-        status:
-          "rounded-full bg-surface-container-high px-3 py-1 text-on-surface text-xs",
+        category: "text-primary text-xs uppercase tracking-widest",
+        tag: "text-on-surface-variant text-xs",
+        status: "text-on-surface text-xs",
       },
     },
     defaultVariants: {
@@ -21,8 +19,7 @@ const badgeVariants = cva(
 );
 
 interface BadgeProps
-  extends React.ComponentProps<"span">,
-    VariantProps<typeof badgeVariants> {}
+  extends React.ComponentProps<"span">, VariantProps<typeof badgeVariants> {}
 
 function Badge({ variant, className, ...props }: BadgeProps) {
   return (

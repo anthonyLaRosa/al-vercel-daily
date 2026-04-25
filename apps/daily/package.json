@@ -12,10 +12,12 @@
     "@radix-ui/react-dialog": "^1.1.15",
     "@repo/ui": "workspace:*",
     "@tanstack/react-query": "^5.99.0",
+    "dayjs": "^1.11.20",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-markdown": "^10.1.0",
+    "rxjs": "^7.8.2",
     "zod": "^4.0.17"
   },
   "devDependencies": {

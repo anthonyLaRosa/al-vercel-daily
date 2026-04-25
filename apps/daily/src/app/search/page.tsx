@@ -6,6 +6,11 @@ import { Suspense } from "react";
 import { SearchBodyNext } from "@/components/search/search-body.next";
 import type { Category } from "@/services/server-side/get-list-articles";
 import { SearchContainerServerNext } from "@/components/search/serch-container-server.next";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Search",
+};
 
 export interface SearchPageProps {
   searchParams: Promise<{ query: string; category: Category }>;

@@ -61,21 +61,23 @@ export function getContentByArticleContent({
             );
           case "image":
             return (
-              <figure key={key} className="my-6">
-                <div className="relative aspect-video overflow-hidden rounded-organic">
-                  <Image
-                    fill
-                    src={block.src}
-                    alt={block.alt}
-                    className="object-cover"
-                  />
-                </div>
-                {block.caption && (
-                  <figcaption className="mt-2 text-center font-body text-on-surface-variant text-xs">
-                    {block.caption}
-                  </figcaption>
-                )}
-              </figure>
+              block.src && (
+                <figure key={key} className="my-6">
+                  <div className="relative aspect-video overflow-hidden rounded-organic">
+                    <Image
+                      fill
+                      src={block.src}
+                      alt={block.alt}
+                      className="object-cover"
+                    />
+                  </div>
+                  {block.caption && (
+                    <figcaption className="mt-2 text-center font-body text-on-surface-variant text-xs">
+                      {block.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              )
             );
           default:
             return null;

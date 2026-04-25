@@ -17,7 +17,9 @@ ArticleBody.Header = function ArticleBodyHeader({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn("mx-auto w-full max-w-2xl px-4", className)} {...props} />;
+  return (
+    <div className={cn("mx-auto w-full max-w-4xl", className)} {...props} />
+  );
 };
 
 ArticleBody.Hero = function ArticleBodyHero({
@@ -32,7 +34,10 @@ ArticleBody.Content = function ArticleBodyContent({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className={cn("mx-auto flex w-full max-w-2xl flex-col gap-4 px-4", className)} {...props} />
+    <div
+      className={cn("mx-auto flex w-full max-w-4xl flex-col gap-4", className)}
+      {...props}
+    />
   );
 };
 

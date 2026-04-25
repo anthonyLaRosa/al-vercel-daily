@@ -10,7 +10,6 @@ function SkeletonSearchResults({ className }: { className?: string }) {
       )}
     >
       {Array.from({ length: 6 }).map((_, i) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: static skeleton
         <div key={i} className="space-y-3">
           <Skeleton className="aspect-[4/3] w-full rounded-gallery" />
           <Skeleton variant="text" className="w-1/3" />

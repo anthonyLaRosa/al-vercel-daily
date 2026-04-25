@@ -9,6 +9,7 @@ const glassPanelVariants = cva(
       variant: {
         default: "border-white/20",
         paywall: "border-black/20",
+        hero: "md:bg-transparent md:border-transparent md:shadow-none! md:rounded-none",
       },
     },
     defaultVariants: {

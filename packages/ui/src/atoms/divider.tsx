@@ -20,8 +20,6 @@ function Divider({
         orientation === "horizontal" ? "h-px w-full" : "w-px self-stretch",
         className,
       )}
-      aria-orientation={orientation}
-      role="separator"
       style={{ opacity: opacity / 100, ...style }}
       {...props}
     />

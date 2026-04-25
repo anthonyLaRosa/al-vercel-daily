@@ -39,7 +39,6 @@ function FooterBar({
                 <a
                   className="font-body text-inverse-on-surface/60 text-xs transition-colors hover:text-inverse-on-surface"
                   href={link.href}
-                  // biome-ignore lint/suspicious/noArrayIndexKey: static footer links
                   key={i}
                 >
                   {link.label}
