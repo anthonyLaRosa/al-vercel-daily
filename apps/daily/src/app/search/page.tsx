@@ -16,9 +16,7 @@ export interface SearchPageProps {
   searchParams: Promise<{ query: string; category: Category }>;
 }
 
-export default async function SearchPageWrapper({
-  searchParams,
-}: SearchPageProps) {
+export default function SearchPageWrapper({ searchParams }: SearchPageProps) {
   return (
     <Suspense
       fallback={

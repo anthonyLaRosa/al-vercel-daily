@@ -8,12 +8,18 @@ import { HeroPlate } from "@repo/ui/molecules/hero-plate";
 import { SectionHeader } from "@repo/ui/molecules/section-header";
 import { ArticleBody } from "@repo/ui/organisms/article-body";
 import { CardsGrid } from "@repo/ui/organisms/cards-grid";
+import { SkeletonArticleBody } from "@repo/ui/organisms/skeleton-article-body";
 import { ArticleBodyNext } from "@/components/article/article-body.next";
 import { TrendingArticlesNext } from "@/components/article/trending-articles.next";
 import { getArticleDetails } from "@/services/server-side/get-article-details";
 import { ShareButtonNext } from "@/components/article/share-button.next";
 import dayjs from "dayjs";
 import type { Metadata } from "next";
+import { Suspense } from "react";
+
+interface ArticleDetailPageProps {
+  params: Promise<{ slug: string }>;
+}
 
 export async function generateMetadata({
   params,
@@ -28,13 +34,15 @@ export async function generateMetadata({
   };
 }
 
-export interface ArticleDetailPageProps {
-  params: Promise<{ slug: string }>;
+export default function ArticleDetailPage({ params }: ArticleDetailPageProps) {
+  return (
+    <Suspense fallback={<SkeletonArticleBody />}>
+      <ArticleDetailContent params={params} />
+    </Suspense>
+  );
 }
 
-export default async function ArticleDetailPage({
-  params,
-}: ArticleDetailPageProps) {
+async function ArticleDetailContent({ params }: ArticleDetailPageProps) {
   const { slug } = await params;
   const article = await getArticleDetails(slug);
 
@@ -52,7 +60,9 @@ export default async function ArticleDetailPage({
           meta={
             <>
               <Badge variant="category">{category}</Badge>
-              <Label color="muted">Published at {dayjs(publishedAt).format("MMMM D, YYYY")}</Label>
+              <Label color="muted">
+                Published at {dayjs(publishedAt).format("MMMM D, YYYY")}
+              </Label>
             </>
           }
           title={

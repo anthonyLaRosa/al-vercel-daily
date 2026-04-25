@@ -16,7 +16,7 @@ export function HeaderNext() {
         <SiteNav.Logo>
           <Link href="/">
             <BodyText size="lg" weight="bold" className="italic">
-              The Archivist
+              Vercel Daily News
             </BodyText>
           </Link>
         </SiteNav.Logo>
@@ -39,7 +39,12 @@ export function HeaderNext() {
           <Button href="/search" icon="Search" variant={"ghost"} />
           <Suspense
             fallback={
-              <Button icon="Menu" variant="ghost" aria-label="Toggle menu" disabled />
+              <Button
+                icon="Menu"
+                variant="ghost"
+                aria-label="Toggle menu"
+                disabled
+              />
             }
           >
             <MobileNavNext>

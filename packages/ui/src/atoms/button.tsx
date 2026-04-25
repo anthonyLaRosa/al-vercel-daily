@@ -34,11 +34,12 @@ const buttonVariants = cva(
   },
 );
 
+export type IconList = keyof typeof icons;
+
 interface ButtonProps
-  extends React.ComponentProps<"button">,
-    VariantProps<typeof buttonVariants> {
+  extends React.ComponentProps<"button">, VariantProps<typeof buttonVariants> {
   href?: string;
-  icon?: keyof typeof icons;
+  icon?: IconList;
   iconPosition?: "left" | "right";
 }
 
@@ -53,21 +54,29 @@ function Button({
   ...props
 }: ButtonProps) {
   const Icon = icon ? icons[icon] : null;
-  const iconLeft = Icon && iconPosition === "left" && <Icon className="h-4 w-4" />;
-  const iconRight = Icon && iconPosition === "right" && <Icon className="h-4 w-4" />;
+  const iconLeft = Icon && iconPosition === "left" && (
+    <Icon className="h-4 w-4" />
+  );
+  const iconRight = Icon && iconPosition === "right" && (
+    <Icon className="h-4 w-4" />
+  );
   const sharedClass = cn(buttonVariants({ variant, size, className }));
 
   if (href) {
     return (
       <Link href={href} className={sharedClass}>
-        {iconLeft}{children}{iconRight}
+        {iconLeft}
+        {children}
+        {iconRight}
       </Link>
     );
   }
 
   return (
     <button className={sharedClass} {...props}>
-      {iconLeft}{children}{iconRight}
+      {iconLeft}
+      {children}
+      {iconRight}
     </button>
   );
 }

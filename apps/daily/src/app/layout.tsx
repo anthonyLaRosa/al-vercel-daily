@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { FooterNext } from "@/components/footer-next";
+import { FooterNext } from "@/components/footer/footer-next";
 import { HeaderNext } from "@/components/header.next";
 import Providers from "@/hooks/TanstackQuery";
 import { getConfiguration } from "@/services/server-side/get-configuration";

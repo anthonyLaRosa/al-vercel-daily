@@ -37,7 +37,6 @@ export async function dailyFetch<T>(
   const params = getQueryParams(options?.params);
   const internalUrl = `${url}${params}`;
   try {
-    const start = Date.now();
     const resp = await fetch(internalUrl, {
       ...options,
       headers: {
@@ -47,8 +46,6 @@ export async function dailyFetch<T>(
       },
     });
     const data = (await resp.json()) as DailyFetchResponse<T>;
-    // biome-ignore lint/suspicious/noConsole: temporary timing debug
-    console.log(`[dailyFetch] ${internalUrl} → ${Date.now() - start}ms`);
     return data;
   } catch (error) {
     return error as DailyFetchResponse<T>;

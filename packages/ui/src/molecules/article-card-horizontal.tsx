@@ -3,8 +3,10 @@ import Link from "next/link";
 import type React from "react";
 import { cn } from "../lib/utils";
 
-interface ArticleCardHorizontalProps
-  extends Omit<ImageProps, "fill" | "width" | "height" | "className"> {
+interface ArticleCardHorizontalProps extends Omit<
+  ImageProps,
+  "fill" | "width" | "height" | "className" | "title"
+> {
   badge?: React.ReactNode;
   title: React.ReactNode;
   excerpt?: React.ReactNode;
@@ -45,7 +47,10 @@ function ArticleCardHorizontal({
 
   if (href) {
     return (
-      <Link className={cn("group flex items-start gap-4", className)} href={href}>
+      <Link
+        className={cn("group flex items-start gap-4", className)}
+        href={href}
+      >
         {inner}
       </Link>
     );

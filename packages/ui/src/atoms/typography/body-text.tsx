@@ -31,12 +31,13 @@ const bodyTextVariants = cva(
 );
 
 interface BodyTextProps
-  extends Omit<React.ComponentProps<"p">, "color">,
+  extends
+    Omit<React.ComponentProps<"p">, "color">,
     VariantProps<typeof bodyTextVariants> {}
 
 function BodyText({ size, color, weight, className, ...props }: BodyTextProps) {
   return (
-    <p
+    <div
       className={cn(bodyTextVariants({ size, color, weight }), className)}
       {...props}
     />
