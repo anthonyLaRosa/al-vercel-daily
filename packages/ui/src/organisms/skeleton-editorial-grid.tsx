@@ -16,7 +16,7 @@ function SkeletonEditorialGrid({ className }: { className?: string }) {
       </div>
       {/* Secondary */}
       <div className="col-span-12 flex flex-col gap-6 xl:col-span-5">
-        {Array.from({ length: 6 }).map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <div key={i} className="flex items-start gap-4">
             <Skeleton className="h-24 w-24 flex-shrink-0 rounded-organic" />
             <div className="min-w-0 flex-1 space-y-2">

@@ -62,7 +62,7 @@ function SearchResultCard({
   const inner = (
     <div
       className={cn(
-        "group overflow-hidden rounded-organic bg-surface-container-lowest shadow-ambient",
+        "group flex h-full flex-col overflow-hidden rounded-organic bg-surface-container-lowest shadow-ambient",
         className,
       )}
     >
@@ -73,7 +73,7 @@ function SearchResultCard({
         radius="none"
         src={src}
       />
-      <div className="space-y-2 p-4">
+      <div className="flex-1 space-y-2 p-4">
         {badge && <div>{badge}</div>}
         <div className="font-headline text-[0.9375rem] text-on-surface leading-snug transition-colors group-hover:text-primary">
           {title}
@@ -89,7 +89,7 @@ function SearchResultCard({
 
   if (href) {
     return (
-      <Link className="block" href={href}>
+      <Link className="block h-full" href={href}>
         {inner}
       </Link>
     );

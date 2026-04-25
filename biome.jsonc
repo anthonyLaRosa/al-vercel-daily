@@ -32,6 +32,7 @@
       "style": {
         // camelCase è comune in React (es. getQueryClient, TanstackQuery)
         "useFilenamingConvention": "off",
+        "noEnum": "off",
       },
       "correctness": {
         "useExhaustiveDependencies": "off",
