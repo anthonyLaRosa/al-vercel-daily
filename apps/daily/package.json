@@ -18,7 +18,8 @@
     "react-dom": "19.2.3",
     "react-markdown": "^10.1.0",
     "rxjs": "^7.8.2",
-    "zod": "^4.0.17"
+    "zod": "^4.0.17",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

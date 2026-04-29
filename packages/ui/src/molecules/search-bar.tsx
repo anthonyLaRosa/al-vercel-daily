@@ -68,7 +68,7 @@ export function SearchBarSelect({
     <Root value={value} onValueChange={onValueChange}>
       <Trigger
         className={cn(
-          "flex cursor-pointer items-center gap-2 rounded-soft bg-surface-container-highest px-4 font-body text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/20",
+          "flex cursor-pointer items-center justify-between gap-2 rounded-soft bg-surface-container-highest px-4 font-body text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/20",
           className,
         )}
       >
@@ -79,7 +79,7 @@ export function SearchBarSelect({
       </Trigger>
       <Portal>
         <Content
-          className="z-50 overflow-hidden rounded-soft bg-surface-container-lowest shadow-lg"
+          className="z-50 min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-soft bg-surface-container-lowest shadow-lg"
           position="popper"
           sideOffset={4}
         >

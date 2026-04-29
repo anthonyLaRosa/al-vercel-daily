@@ -1,24 +1,33 @@
 import { Badge } from "@repo/ui/atoms/badge";
-import { Button } from "@repo/ui/atoms/button";
 import { Headline } from "@repo/ui/atoms/typography/headline";
 import { Label } from "@repo/ui/atoms/typography/label";
 import { ArticleHeader } from "@repo/ui/molecules/article-header";
 import { AuthorCard } from "@repo/ui/molecules/author-card";
 import { HeroPlate } from "@repo/ui/molecules/hero-plate";
-import { SectionHeader } from "@repo/ui/molecules/section-header";
 import { ArticleBody } from "@repo/ui/organisms/article-body";
-import { CardsGrid } from "@repo/ui/organisms/cards-grid";
-import { SkeletonArticleBody } from "@repo/ui/organisms/skeleton-article-body";
 import { ArticleBodyNext } from "@/components/article/article-body.next";
 import { TrendingArticlesNext } from "@/components/article/trending-articles.next";
 import { getArticleDetails } from "@/services/server-side/get-article-details";
 import { ShareButtonNext } from "@/components/article/share-button.next";
 import dayjs from "dayjs";
 import type { Metadata } from "next";
-import { Suspense } from "react";
+import { notFound } from "next/navigation";
+import { getTrendingServer } from "@/services/server-side/get-trending";
+import { cookies } from "next/headers";
+import type { Article } from "@/services/server-side/get-list-articles";
+import { cacheLife, cacheTag } from "next/cache";
 
 interface ArticleDetailPageProps {
   params: Promise<{ slug: string }>;
+}
+
+interface ArticleDetailComponentProps {
+  article: Article;
+  trendingArticles?: Article[];
+  slug: string;
+}
+interface ArticleDetailContentProps extends ArticleDetailComponentProps {
+  paid: "preview" | "full";
 }
 
 export async function generateMetadata({
@@ -34,24 +43,47 @@ export async function generateMetadata({
   };
 }
 
-export default function ArticleDetailPage({ params }: ArticleDetailPageProps) {
-  return (
-    <Suspense fallback={<SkeletonArticleBody />}>
-      <ArticleDetailContent params={params} />
-    </Suspense>
-  );
+export async function generateStaticParams() {
+  return [{ slug: "public-not-found" }];
 }
 
-async function ArticleDetailContent({ params }: ArticleDetailPageProps) {
+export default async function ArticlePage({ params }: ArticleDetailPageProps) {
   const { slug } = await params;
   const article = await getArticleDetails(slug);
 
   if (!article.data) {
-    return <div>Article not found</div>;
+    notFound();
   }
 
+  return <ArticleDetailPaywallCheck article={article.data} slug={slug} />;
+}
+
+async function ArticleDetailPaywallCheck({
+  article,
+  slug,
+}: ArticleDetailComponentProps) {
+  const paid = (await cookies()).has("paid") ? "full" : "preview";
+
+  return <ArticleDetailContent article={article} paid={paid} slug={slug} />;
+}
+
+async function ArticleDetailContent({
+  article,
+  paid,
+  slug,
+}: ArticleDetailContentProps) {
+  "use cache";
+
+  cacheTag(
+    "article-page",
+    `article-page-${slug}`,
+    `article-page-${slug}-${paid}`,
+  );
+  cacheLife("hours");
+
+  const trendingArticles = await getTrendingServer([slug]);
   const { title, content, category, author, image, publishedAt, tags } =
-    article.data;
+    article;
 
   return (
     <ArticleBody>
@@ -87,28 +119,9 @@ async function ArticleDetailContent({ params }: ArticleDetailPageProps) {
         />
       </ArticleBody.Hero>
 
-      <ArticleBodyNext content={content} />
+      <ArticleBodyNext content={content} paid={paid} />
 
-      <CardsGrid>
-        <CardsGrid.Header>
-          <SectionHeader
-            title="Trending Now"
-            actions={
-              <Button
-                variant="ghost"
-                icon="ArrowRight"
-                iconPosition="right"
-                href="/search"
-              >
-                See all
-              </Button>
-            }
-          />
-        </CardsGrid.Header>
-        <CardsGrid.Items columns={3}>
-          <TrendingArticlesNext id={slug} />
-        </CardsGrid.Items>
-      </CardsGrid>
+      <TrendingArticlesNext articles={trendingArticles?.data || []} />
     </ArticleBody>
   );
 }

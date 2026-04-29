@@ -53,10 +53,11 @@ export function SearchContainerNext({
   useEffect(() => {
     setQueryValue(query || "");
     setCategoryValue(category || "all");
-  }, []);
+  }, [category, query]);
 
   return (
     <SearchBar
+      className="flex-col md:flex-row"
       onSubmit={(e) => {
         e.preventDefault();
         handleSearch();
@@ -70,14 +71,23 @@ export function SearchContainerNext({
         }}
         name="query"
       />
-      <SearchBarSelect
-        value={categoryValue}
-        onValueChange={(value) => setCategoryValue(value)}
-        options={options}
-      />
-      <SearchBarButton disabled={isPending} onClick={handleSearch}>
-        {isPending ? "Searching..." : "Search"}
-      </SearchBarButton>
+      <div className="flex gap-3 md:contents">
+        <div className="flex flex-1 md:contents">
+          <SearchBarSelect
+            className="w-full md:w-auto"
+            value={categoryValue}
+            onValueChange={(value) => setCategoryValue(value)}
+            options={options}
+          />
+        </div>
+        <SearchBarButton
+          className="flex-1 md:flex-none"
+          disabled={isPending}
+          onClick={handleSearch}
+        >
+          {isPending ? "Searching..." : "Search"}
+        </SearchBarButton>
+      </div>
     </SearchBar>
   );
 }

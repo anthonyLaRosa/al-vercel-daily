@@ -5,8 +5,13 @@ import { FeatureCard } from "@repo/ui/molecules/feature-card";
 import { EditorialGrid } from "@repo/ui/organisms/editorial-grid";
 import { getListArticles } from "@/services/server-side/get-list-articles";
 import { capitalizeFirstLetter } from "@/helpers/string-helpers";
+import { cacheLife, cacheTag } from "next/cache";
 
 export async function FeaturedArticlesNext() {
+  "use cache";
+  cacheTag("featured-articles");
+  cacheLife("hours");
+
   const listArticles = await getListArticles({
     page: 1,
     featured: true,

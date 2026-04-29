@@ -4,24 +4,26 @@ import { Headline } from "@repo/ui/atoms/typography/headline";
 import { PaywallSection } from "@repo/ui/organisms/paywall-section";
 import { getContentByArticleContent } from "@/helpers/getContentByArticleContent";
 import type { ArticleContent } from "@/services/server-side/get-list-articles";
+import { setPaywall } from "@/helpers/paywall-action";
 
 export interface ArticleBodyNextProps {
   content: ArticleContent;
-  paywall?: boolean;
+  paid?: "preview" | "full";
 }
 
 export const ArticleBodyNext = ({
   content,
-  paywall = false,
+  paid = "preview",
 }: ArticleBodyNextProps) => {
   if (!content) {
     return null;
   }
 
-  if (paywall) {
+  if (paid === "full") {
     return getContentByArticleContent({ blocks: content });
   }
-  const previewContent = content.slice(0, Math.ceil(content.length / 2));
+
+  const previewContent = content.slice(0, 1);
 
   return (
     <PaywallSection>
@@ -34,7 +36,7 @@ export const ArticleBodyNext = ({
           className="w-full max-w-md p-8 text-center space-y-4"
         >
           <Headline size="title-lg">Subscribe to read more</Headline>
-          <Button>Get full access</Button>
+          <Button onClick={setPaywall}>Get full access</Button>
         </GlassPanel>
       </PaywallSection.Gate>
     </PaywallSection>

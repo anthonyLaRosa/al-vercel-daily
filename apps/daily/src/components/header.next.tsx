@@ -4,10 +4,11 @@ import { SkeletonNavLinks } from "@repo/ui/molecules/skeleton-nav-links";
 import { SiteNav } from "@repo/ui/organisms/site-nav";
 import Link from "next/link";
 import { Suspense } from "react";
-import { BreakingNewsBannerNext } from "./breaking-news.next";
 import { MobileNavNext } from "./mobile-nav.next";
 import { NavLinksNext } from "./nav-links.next";
 import { SubscribeButton } from "./subscribe-button.next";
+import { SkeletonBreakingNewsBanner } from "@repo/ui/molecules/skeleton-breaking-news-banner";
+import { BreakingNewsNext } from "./breaking-news/breaking-news.next";
 
 export function HeaderNext() {
   return (
@@ -57,7 +58,9 @@ export function HeaderNext() {
         </div>
       </SiteNav.Bar>
       <SiteNav.Banner>
-        <BreakingNewsBannerNext />
+        <Suspense fallback={<SkeletonBreakingNewsBanner />}>
+          <BreakingNewsNext />
+        </Suspense>
       </SiteNav.Banner>
     </SiteNav>
   );
