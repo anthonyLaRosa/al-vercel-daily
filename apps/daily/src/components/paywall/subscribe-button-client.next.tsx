@@ -6,12 +6,12 @@ import { setPaywall } from "@/helpers/paywall-action";
 
 export function SubscribeButtonClient({ label }: { label: string }) {
   const startAppTransition = useTransitionStore((s) => s.startAppTransition);
-  const isPending = useTransitionStore((s) => s.isPending);
+  const status = useTransitionStore((s) => s.status);
 
   const handleClick = () => {
     startAppTransition?.(() => {
       setPaywall();
-    });
+    }, "paywall");
   };
 
   return (
@@ -19,9 +19,9 @@ export function SubscribeButtonClient({ label }: { label: string }) {
       variant="default"
       size="sm"
       onClick={handleClick}
-      disabled={isPending}
+      disabled={status.id === "paywall" && status.isPending}
     >
-      {isPending ? "Processing..." : label}
+      {status.id === "paywall" && status.isPending ? "Processing..." : label}
     </Button>
   );
 }

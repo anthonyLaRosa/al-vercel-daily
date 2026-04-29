@@ -15,13 +15,27 @@ export function ProgressBar() {
 
   useEffect(() => {
     useTransitionStore.setState({
-      startAppTransition: (fn) => startTransition(fn),
-      navigate: (fn) => startTransition(fn),
+      startAppTransition: (fn, id) =>
+        startTransition(() => {
+          useTransitionStore.setState((s) => ({
+            status: { isPending: false, id: id ?? s.status.id },
+          }));
+          fn();
+        }),
+      navigate: (fn) =>
+        startTransition(() => {
+          useTransitionStore.setState({
+            status: { isPending: false, id: "route" },
+          });
+          fn();
+        }),
     });
   }, []);
 
   useEffect(() => {
-    useTransitionStore.setState({ isPending });
+    useTransitionStore.setState((s) => ({
+      status: { ...s.status, isPending },
+    }));
   }, [isPending]);
 
   useEffect(() => {

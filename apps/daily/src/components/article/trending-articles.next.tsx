@@ -35,6 +35,7 @@ export function TrendingArticlesNext({
             alt={article.title}
             title={article.title}
             badge={<Badge variant="category">{article.category}</Badge>}
+            href={`/articles/${article.slug}`}
             sizes="(max-width: 767px) 100vw, (max-width: 1279px) calc(50vw - 44px), 443px"
           />
         ))}

@@ -1,13 +1,21 @@
 import { create } from "zustand";
 
+type TransitionId = "route" | "search" | "paywall";
+
 interface TransitionState {
-  isPending: boolean;
-  startAppTransition: ((fn: () => void) => void) | null;
+  status: {
+    isPending: boolean;
+    id: TransitionId;
+  };
+  startAppTransition: ((fn: () => void, id?: TransitionId) => void) | null;
   navigate: ((fn: () => void) => void) | null;
 }
 
 export const useTransitionStore = create<TransitionState>(() => ({
-  isPending: false,
+  status: {
+    isPending: false,
+    id: "route",
+  },
   startAppTransition: null,
   navigate: null,
 }));

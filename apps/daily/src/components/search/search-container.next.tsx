@@ -22,11 +22,11 @@ export function SearchContainerNext({
   options: LabelValue[];
 }) {
   const router = useRouter();
-  const isPending = useTransitionStore((s) => s.isPending);
-  const navigate = useTransitionStore((s) => s.navigate);
+  const status = useTransitionStore((s) => s.status);
+  const startAppTransition = useTransitionStore((s) => s.startAppTransition);
   const [queryValue, setQueryValue] = useState<string>(query || "");
   const [categoryValue, setCategoryValue] = useState(category || "all");
-  const [searchSubject] = useState<Subject<void>>(new Subject<void>());
+  const [searchSubject] = useState<Subject<string>>(new Subject<string>());
 
   const handleSearch = () => {
     const url = new URLSearchParams();
@@ -36,17 +36,21 @@ export function SearchContainerNext({
     if (categoryValue && categoryValue !== "all") {
       url.set("category", categoryValue);
     }
-    navigate?.(() => {
+    startAppTransition?.(() => {
       router.push(`/search?${url.toString()}`);
-    });
+    }, "search");
   };
   const debouncedSearch = useRef<(() => void) | undefined>(undefined);
   debouncedSearch.current = handleSearch;
 
   useEffect(() => {
-    const subscription = searchSubject.pipe(debounceTime(500)).subscribe(() => {
-      debouncedSearch.current?.();
-    });
+    const subscription = searchSubject
+      .pipe(debounceTime(500))
+      .subscribe((value) => {
+        if (value && value.length > 3) {
+          debouncedSearch.current?.();
+        }
+      });
     return () => {
       subscription.unsubscribe();
     };
@@ -69,7 +73,7 @@ export function SearchContainerNext({
         value={queryValue}
         onChange={(e) => {
           setQueryValue(e.target.value);
-          searchSubject.next();
+          searchSubject.next(e.target.value);
         }}
         name="query"
       />
@@ -84,10 +88,12 @@ export function SearchContainerNext({
         </div>
         <SearchBarButton
           className="flex-1 md:flex-none"
-          disabled={isPending}
+          disabled={status.id === "search" && status.isPending}
           onClick={handleSearch}
         >
-          {isPending ? "Searching..." : "Search"}
+          {status.id === "search" && status.isPending
+            ? "Searching..."
+            : "Search"}
         </SearchBarButton>
       </div>
     </SearchBar>
