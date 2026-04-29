@@ -23,6 +23,7 @@ function TransitionLink({ href, children, className }: TransitionLinkProps) {
         e.preventDefault();
         navigate?.(() => router.push(href));
       }}
+      prefetch={false}
     >
       {children}
     </Link>

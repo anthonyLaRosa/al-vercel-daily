@@ -5,6 +5,7 @@ import { ArticleHeader } from "@repo/ui/molecules/article-header";
 import { AuthorCard } from "@repo/ui/molecules/author-card";
 import { HeroPlate } from "@repo/ui/molecules/hero-plate";
 import { ArticleBody } from "@repo/ui/organisms/article-body";
+import { SkeletonArticleBody } from "@repo/ui/organisms/skeleton-article-body";
 import { ArticleBodyNext } from "@/components/article/article-body.next";
 import { TrendingArticlesNext } from "@/components/article/trending-articles.next";
 import { getArticleDetails } from "@/services/server-side/get-article-details";
@@ -16,6 +17,7 @@ import { getTrendingServer } from "@/services/server-side/get-trending";
 import { cookies } from "next/headers";
 import type { Article } from "@/services/server-side/get-list-articles";
 import { cacheLife, cacheTag } from "next/cache";
+import { Suspense } from "react";
 
 interface ArticleDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -55,7 +57,11 @@ export default async function ArticlePage({ params }: ArticleDetailPageProps) {
     notFound();
   }
 
-  return <ArticleDetailPaywallCheck article={article.data} slug={slug} />;
+  return (
+    <Suspense fallback={<SkeletonArticleBody />}>
+      <ArticleDetailPaywallCheck article={article.data} slug={slug} />
+    </Suspense>
+  );
 }
 
 async function ArticleDetailPaywallCheck({
@@ -113,7 +119,8 @@ async function ArticleDetailContent({
             src: image,
             alt: title,
             fill: true,
-            sizes: "(max-width: 767px) 100vw, (max-width: 1279px) calc(100vw - 64px), 1376px",
+            sizes:
+              "(max-width: 767px) 100vw, (max-width: 1279px) calc(100vw - 64px), 1376px",
           }}
           className="aspect-[16/9] rounded-gallery"
           caption={<Label color="muted">{tags?.join(", ")}</Label>}
