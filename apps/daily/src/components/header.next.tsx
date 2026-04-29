@@ -1,8 +1,8 @@
 import { Button } from "@repo/ui/atoms/button";
+import { TransitionLink } from "@repo/ui/atoms/transition-link";
 import { BodyText } from "@repo/ui/atoms/typography/body-text";
 import { SkeletonNavLinks } from "@repo/ui/molecules/skeleton-nav-links";
 import { SiteNav } from "@repo/ui/organisms/site-nav";
-import Link from "next/link";
 import { Suspense } from "react";
 import { MobileNavNext } from "./mobile-nav.next";
 import { NavLinksNext } from "./nav-links.next";
@@ -15,11 +15,11 @@ export function HeaderNext() {
     <SiteNav>
       <SiteNav.Bar className="relative">
         <SiteNav.Logo>
-          <Link href="/">
+          <TransitionLink href="/">
             <BodyText size="lg" weight="bold" className="italic">
               Vercel Daily News
             </BodyText>
-          </Link>
+          </TransitionLink>
         </SiteNav.Logo>
 
         {/* Desktop nav */}

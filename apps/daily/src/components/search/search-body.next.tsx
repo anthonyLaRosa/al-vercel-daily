@@ -40,6 +40,7 @@ export async function SearchBodyNext({
           excerpt={article.excerpt}
           badge={<Badge>{article.category}</Badge>}
           href={`/articles/${article.slug}`}
+          sizes="(max-width: 767px) 100vw, (max-width: 1279px) calc(50vw - 44px), 443px"
         />
       ))}
     </SearchLayout.Results>

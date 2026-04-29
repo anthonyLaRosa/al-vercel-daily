@@ -69,6 +69,7 @@ export function getContentByArticleContent({
                       src={block.src}
                       alt={block.alt}
                       className="object-cover"
+                      sizes="(max-width: 767px) 100vw, 896px"
                     />
                   </div>
                   {block.caption && (

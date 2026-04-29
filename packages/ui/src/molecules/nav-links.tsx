@@ -1,6 +1,6 @@
 import { cn } from "../lib/utils";
 import type { LabelValue } from "./search-bar";
-import Link from "next/link";
+import { TransitionLink } from "../atoms/transition-link";
 
 interface NavLinksProps {
   items: LabelValue[];
@@ -23,14 +23,14 @@ function NavLinks({
     >
       {items.map((item) => (
         <li key={item.value}>
-          <Link
+          <TransitionLink
             className={cn(
               "inline-block rounded-soft px-3 py-2 font-body text-sm transition-colors",
             )}
             href={`/search?category=${item.value}`}
           >
             {item.label}
-          </Link>
+          </TransitionLink>
         </li>
       ))}
     </ul>

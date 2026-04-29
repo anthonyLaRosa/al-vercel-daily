@@ -31,7 +31,8 @@ export function HeroBannerNext() {
             src: "/images/heroBanner.png",
             alt: "Hero",
             fill: true,
-            style: { objectFit: "cover", objectPosition: "center" },
+            style: { objectFit: "cover", objectPosition: "82%" },
+            sizes: "(max-width: 767px) 100vw, (max-width: 1279px) 55vw, 900px",
           }}
           className="aspect-[4/3] rounded-gallery"
         />

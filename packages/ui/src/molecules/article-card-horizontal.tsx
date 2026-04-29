@@ -1,7 +1,7 @@
 import Image, { type ImageProps } from "next/image";
-import Link from "next/link";
 import type React from "react";
 import { cn } from "../lib/utils";
+import { TransitionLink } from "../atoms/transition-link";
 
 interface ArticleCardHorizontalProps extends Omit<
   ImageProps,
@@ -20,6 +20,7 @@ function ArticleCardHorizontal({
   excerpt,
   href,
   className,
+  sizes = "150px",
   ...imageProps
 }: ArticleCardHorizontalProps) {
   const inner = (
@@ -28,6 +29,7 @@ function ArticleCardHorizontal({
         <Image
           fill
           {...imageProps}
+          sizes={sizes}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
@@ -47,12 +49,12 @@ function ArticleCardHorizontal({
 
   if (href) {
     return (
-      <Link
+      <TransitionLink
         className={cn("group flex items-start gap-4", className)}
         href={href}
       >
         {inner}
-      </Link>
+      </TransitionLink>
     );
   }
 

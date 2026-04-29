@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { icons } from "lucide-react";
-import Link from "next/link";
+import { TransitionLink } from "./transition-link";
 import type React from "react";
 import { cn } from "../lib/utils";
 
@@ -64,11 +64,11 @@ function Button({
 
   if (href) {
     return (
-      <Link href={href} className={sharedClass}>
+      <TransitionLink href={href} className={sharedClass}>
         {iconLeft}
         {children}
         {iconRight}
-      </Link>
+      </TransitionLink>
     );
   }
 

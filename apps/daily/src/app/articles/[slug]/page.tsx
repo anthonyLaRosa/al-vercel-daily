@@ -113,6 +113,7 @@ async function ArticleDetailContent({
             src: image,
             alt: title,
             fill: true,
+            sizes: "(max-width: 767px) 100vw, (max-width: 1279px) calc(100vw - 64px), 1376px",
           }}
           className="aspect-[16/9] rounded-gallery"
           caption={<Label color="muted">{tags?.join(", ")}</Label>}

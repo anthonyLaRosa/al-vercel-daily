@@ -1,7 +1,7 @@
-import Link from "next/link";
 import type React from "react";
 import { HeroImage } from "../atoms/hero-image";
 import { cn } from "../lib/utils";
+import { TransitionLink } from "../atoms/transition-link";
 
 interface FeatureCardProps {
   src: string;
@@ -12,6 +12,7 @@ interface FeatureCardProps {
   footer?: React.ReactNode;
   href?: string;
   className?: string;
+  sizes?: string;
 }
 
 function FeatureCard({
@@ -23,6 +24,7 @@ function FeatureCard({
   footer,
   href,
   className,
+  sizes,
 }: FeatureCardProps) {
   const inner = (
     <>
@@ -32,6 +34,7 @@ function FeatureCard({
         hoverZoom
         radius="none"
         src={src}
+        sizes={sizes}
       />
       <div className="space-y-4 p-6">
         {badge && <div>{badge}</div>}
@@ -54,7 +57,7 @@ function FeatureCard({
 
   if (href) {
     return (
-      <Link
+      <TransitionLink
         className={cn(
           "group block overflow-hidden rounded-organic bg-surface-container-lowest shadow-ambient transition-shadow hover:shadow-lg",
           className,
@@ -62,7 +65,7 @@ function FeatureCard({
         href={href}
       >
         {inner}
-      </Link>
+      </TransitionLink>
     );
   }
 

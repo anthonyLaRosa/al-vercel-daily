@@ -8,7 +8,8 @@ import {
   SearchBarSelect,
 } from "@repo/ui/molecules/search-bar";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTransitionStore } from "@repo/ui/stores/transition-store";
 import { Subject, debounceTime } from "rxjs";
 
 export function SearchContainerNext({
@@ -21,7 +22,8 @@ export function SearchContainerNext({
   options: LabelValue[];
 }) {
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const isPending = useTransitionStore((s) => s.isPending);
+  const navigate = useTransitionStore((s) => s.navigate);
   const [queryValue, setQueryValue] = useState<string>(query || "");
   const [categoryValue, setCategoryValue] = useState(category || "all");
   const [searchSubject] = useState<Subject<void>>(new Subject<void>());
@@ -34,7 +36,7 @@ export function SearchContainerNext({
     if (categoryValue && categoryValue !== "all") {
       url.set("category", categoryValue);
     }
-    startTransition(() => {
+    navigate?.(() => {
       router.push(`/search?${url.toString()}`);
     });
   };

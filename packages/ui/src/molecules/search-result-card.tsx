@@ -1,7 +1,7 @@
-import Link from "next/link";
 import type React from "react";
 import { HeroImage } from "../atoms/hero-image";
 import { cn } from "../lib/utils";
+import { TransitionLink } from "../atoms/transition-link";
 
 interface SearchResultCardProps {
   src: string;
@@ -12,6 +12,7 @@ interface SearchResultCardProps {
   overlay?: boolean;
   href?: string;
   className?: string;
+  sizes?: string;
 }
 
 function SearchResultCard({
@@ -23,6 +24,7 @@ function SearchResultCard({
   overlay = false,
   href,
   className,
+  sizes,
 }: SearchResultCardProps) {
   if (overlay) {
     const inner = (
@@ -38,6 +40,7 @@ function SearchResultCard({
           hoverZoom
           radius="none"
           src={src}
+          sizes={sizes}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/20 to-transparent" />
         <div className="absolute right-0 bottom-0 left-0 space-y-2 p-5">
@@ -54,7 +57,7 @@ function SearchResultCard({
       </div>
     );
     if (href) {
-      return <Link href={href}>{inner}</Link>;
+      return <TransitionLink href={href}>{inner}</TransitionLink>;
     }
     return inner;
   }
@@ -72,6 +75,7 @@ function SearchResultCard({
         hoverZoom
         radius="none"
         src={src}
+        sizes={sizes}
       />
       <div className="flex-1 space-y-2 p-4">
         {badge && <div>{badge}</div>}
@@ -89,9 +93,9 @@ function SearchResultCard({
 
   if (href) {
     return (
-      <Link className="block h-full" href={href}>
+      <TransitionLink className="block h-full" href={href}>
         {inner}
-      </Link>
+      </TransitionLink>
     );
   }
   return inner;

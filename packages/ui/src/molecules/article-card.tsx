@@ -1,7 +1,7 @@
-import Link from "next/link";
 import type React from "react";
 import { HeroImage } from "../atoms/hero-image";
 import { cn } from "../lib/utils";
+import { TransitionLink } from "../atoms/transition-link";
 
 interface ArticleCardProps {
   src: string;
@@ -11,6 +11,7 @@ interface ArticleCardProps {
   meta?: React.ReactNode;
   href?: string;
   className?: string;
+  sizes?: string;
 }
 
 function ArticleCard({
@@ -21,6 +22,7 @@ function ArticleCard({
   meta,
   href,
   className,
+  sizes,
 }: ArticleCardProps) {
   const inner = (
     <>
@@ -30,6 +32,7 @@ function ArticleCard({
         hoverZoom
         radius="none"
         src={src}
+        sizes={sizes}
       />
       <div className="space-y-3 p-5">
         {badge && <div>{badge}</div>}
@@ -47,7 +50,7 @@ function ArticleCard({
 
   if (href) {
     return (
-      <Link
+      <TransitionLink
         className={cn(
           "group block overflow-hidden rounded-organic bg-surface-container-lowest shadow-ambient transition-shadow hover:shadow-lg",
           className,
@@ -55,7 +58,7 @@ function ArticleCard({
         href={href}
       >
         {inner}
-      </Link>
+      </TransitionLink>
     );
   }
 

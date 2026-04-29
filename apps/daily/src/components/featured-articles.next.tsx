@@ -25,6 +25,7 @@ export async function FeaturedArticlesNext() {
           src={firstArticle?.image || ""}
           alt={firstArticle?.title || ""}
           href={`/articles/${firstArticle?.slug}`}
+          sizes="(max-width: 1279px) 100vw, 784px"
           badge={
             <Badge variant="tag">
               {capitalizeFirstLetter(firstArticle?.category)}
