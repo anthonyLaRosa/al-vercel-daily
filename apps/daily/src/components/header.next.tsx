@@ -2,11 +2,12 @@ import { Button } from "@repo/ui/atoms/button";
 import { TransitionLink } from "@repo/ui/atoms/transition-link";
 import { BodyText } from "@repo/ui/atoms/typography/body-text";
 import { SkeletonNavLinks } from "@repo/ui/molecules/skeleton-nav-links";
+import { SkeletonSubscribeButton } from "@repo/ui/molecules/skeleton-subscribe-button";
 import { SiteNav } from "@repo/ui/organisms/site-nav";
 import { Suspense } from "react";
 import { MobileNavNext } from "./mobile-nav.next";
 import { NavLinksNext } from "./nav-links.next";
-import { SubscribeButton } from "./subscribe-button.next";
+import { SubscribeButton } from "./paywall/subscribe-button.next";
 import { SkeletonBreakingNewsBanner } from "@repo/ui/molecules/skeleton-breaking-news-banner";
 import { BreakingNewsNext } from "./breaking-news/breaking-news.next";
 
@@ -32,7 +33,9 @@ export function HeaderNext() {
         {/* Desktop actions */}
         <SiteNav.Actions className="hidden md:flex">
           <Button href="/search" icon="Search" variant={"outline"} />
-          <SubscribeButton />
+          <Suspense fallback={<SkeletonSubscribeButton />}>
+            <SubscribeButton />
+          </Suspense>
         </SiteNav.Actions>
 
         {/* Mobile actions */}
@@ -51,7 +54,9 @@ export function HeaderNext() {
             <MobileNavNext>
               <NavLinksNext orientation="vertical" />
               <div className="mt-4 border-outline-variant/20 border-t pt-4">
-                <SubscribeButton />
+                <Suspense fallback={<SkeletonSubscribeButton />}>
+                  <SubscribeButton />
+                </Suspense>
               </div>
             </MobileNavNext>
           </Suspense>

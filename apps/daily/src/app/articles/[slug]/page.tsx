@@ -14,10 +14,10 @@ import dayjs from "dayjs";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTrendingServer } from "@/services/server-side/get-trending";
-import { cookies } from "next/headers";
 import type { Article } from "@/services/server-side/get-list-articles";
 import { cacheLife, cacheTag } from "next/cache";
 import { Suspense } from "react";
+import { getPaywall } from "@/helpers/paywall-action";
 
 interface ArticleDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -68,7 +68,7 @@ async function ArticleDetailPaywallCheck({
   article,
   slug,
 }: ArticleDetailComponentProps) {
-  const paid = (await cookies()).has("paid") ? "full" : "preview";
+  const paid = await getPaywall();
 
   return <ArticleDetailContent article={article} paid={paid} slug={slug} />;
 }
