@@ -18,6 +18,7 @@ import type { Article } from "@/services/server-side/get-list-articles";
 import { cacheLife, cacheTag } from "next/cache";
 import { Suspense } from "react";
 import { getPaywall } from "@/helpers/paywall-action";
+import type { Paywall } from "@/interfaces/Paywall.interface";
 
 interface ArticleDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -29,7 +30,7 @@ interface ArticleDetailComponentProps {
   slug: string;
 }
 interface ArticleDetailContentProps extends ArticleDetailComponentProps {
-  paid: "preview" | "full";
+  paid: Paywall;
 }
 
 export async function generateMetadata({

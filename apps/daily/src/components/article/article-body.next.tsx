@@ -4,10 +4,11 @@ import { PaywallSection } from "@repo/ui/organisms/paywall-section";
 import { getContentByArticleContent } from "@/helpers/getContentByArticleContent";
 import type { ArticleContent } from "@/services/server-side/get-list-articles";
 import { SubscribeButtonClient } from "../paywall/subscribe-button-client.next";
+import type { Paywall } from "@/interfaces/Paywall.interface";
 
 export interface ArticleBodyNextProps {
   content: ArticleContent;
-  paid?: "preview" | "full";
+  paid?: Paywall;
 }
 
 export const ArticleBodyNext = ({

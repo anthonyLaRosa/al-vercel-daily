@@ -1,6 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
+import type { Paywall } from "@/interfaces/Paywall.interface";
 
 export const setPaywall = async () => {
   const cookieStore = await cookies();
@@ -13,8 +14,8 @@ export const setPaywall = async () => {
   });
 };
 
-export const getPaywall = async () => {
+export const getPaywall = async (): Promise<Paywall> => {
   const cookieStore = await cookies();
   const paid = cookieStore.get("paid")?.value || "preview";
-  return paid;
+  return paid as Paywall;
 };
