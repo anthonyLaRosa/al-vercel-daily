@@ -42,7 +42,7 @@ export async function dailyFetch<T>(
       ...options,
       headers: {
         "Content-Type": "application/json",
-        "x-vercel-protection-bypass": "OykROcuULI6YJwAwk3VnWv4gMMbpAq6q",
+        "x-vercel-protection-bypass": process.env.VD_BYPASS_KEY || "not-found",
         ...(options?.headers ?? {}),
       },
     });
