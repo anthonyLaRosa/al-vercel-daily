@@ -33,6 +33,8 @@ export function HeroBannerNext() {
             fill: true,
             style: { objectFit: "cover", objectPosition: "82%" },
             sizes: "(max-width: 767px) 100vw, (max-width: 1279px) 55vw, 900px",
+            preload: true,
+            loading: "eager",
           }}
           className="aspect-[4/3] rounded-gallery"
         />

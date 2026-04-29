@@ -6,6 +6,8 @@ import { HeaderNext } from "@/components/header.next";
 import { ProgressBar } from "@/components/progress-bar.next";
 import Providers from "@/hooks/TanstackQuery";
 import { getConfiguration } from "@/services/server-side/get-configuration";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const configuration = await getConfiguration();
@@ -34,6 +36,8 @@ export default function RootLayout({
             <HeaderNext />
             <main className="flex flex-col gap-12 px-4 md:px-8 pt-6 pb-12">
               {children}
+              <Analytics />
+              <SpeedInsights />
             </main>
             <FooterNext />
           </div>

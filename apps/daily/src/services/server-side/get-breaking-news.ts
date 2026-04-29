@@ -11,7 +11,6 @@ export interface GetBreakingNewsResponse {
 }
 
 export async function getBreakingNewsServer() {
-  const baseUrl = "https://vercel-daily-news-api.vercel.app/api";
-  const internalUrl = `${baseUrl}/breaking-news`;
+  const internalUrl = "/breaking-news";
   return dailyFetch<GetBreakingNewsResponse>(internalUrl);
 }

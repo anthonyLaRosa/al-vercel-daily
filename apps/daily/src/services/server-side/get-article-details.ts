@@ -8,7 +8,6 @@ export async function getArticleDetails(slug: string) {
   cacheTag("article-page", `article-page-${slug}`);
   cacheLife("hours");
 
-  const baseUrl = "https://vercel-daily-news-api.vercel.app/api";
-  const internalUrl = `${baseUrl}/articles/${slug}`;
+  const internalUrl = `/articles/${slug}`;
   return dailyFetch<Article>(internalUrl);
 }

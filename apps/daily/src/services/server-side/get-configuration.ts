@@ -29,7 +29,6 @@ export async function getConfiguration() {
   cacheLife("days");
   cacheTag(CacheTag.Configuration);
 
-  const baseUrl = "https://vercel-daily-news-api.vercel.app/api";
-  const internalUrl = `${baseUrl}/publication/config`;
+  const internalUrl = "/publication/config";
   return dailyFetch<Configuration>(internalUrl);
 }

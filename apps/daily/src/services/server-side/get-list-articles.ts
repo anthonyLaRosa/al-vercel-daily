@@ -75,8 +75,7 @@ export interface Article {
 }
 
 export async function getListArticles(params?: getListArticlesParams) {
-  const baseUrl = "https://vercel-daily-news-api.vercel.app/api";
-  const internalUrl = `${baseUrl}/articles`;
+  const internalUrl = "/articles";
   return dailyFetch<Article[]>(internalUrl, {
     params,
   });

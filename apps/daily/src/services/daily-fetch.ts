@@ -34,8 +34,9 @@ export async function dailyFetch<T>(
   url: string,
   options?: DailyFetchRequestInit,
 ) {
+  const baseUrl = process.env.VD_BE_API_URL;
   const params = getQueryParams(options?.params);
-  const internalUrl = `${url}${params}`;
+  const internalUrl = `${baseUrl}${url}${params}`;
   try {
     const resp = await fetch(internalUrl, {
       ...options,

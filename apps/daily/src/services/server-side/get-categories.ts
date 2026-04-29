@@ -13,7 +13,6 @@ export async function getCategories() {
   cacheLife("hours");
   cacheTag(CacheTag.Categories);
 
-  const baseUrl = "https://vercel-daily-news-api.vercel.app/api";
-  const internalUrl = `${baseUrl}/categories`;
+  const internalUrl = "/categories";
   return dailyFetch<Category[]>(internalUrl);
 }
