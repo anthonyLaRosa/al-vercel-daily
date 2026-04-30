@@ -25,7 +25,7 @@ export interface Configuration {
 }
 
 export async function getConfiguration() {
-  "use cache";
+  "use cache: remote";
   cacheLife("days");
   cacheTag(CacheTag.Configuration);
 

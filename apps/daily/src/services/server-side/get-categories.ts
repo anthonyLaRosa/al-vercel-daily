@@ -9,7 +9,7 @@ export interface Category {
 }
 
 export async function getCategories() {
-  "use cache";
+  "use cache: remote";
   cacheLife("hours");
   cacheTag(CacheTag.Categories);
 

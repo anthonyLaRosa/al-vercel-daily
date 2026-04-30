@@ -8,7 +8,7 @@ import { capitalizeFirstLetter } from "@/helpers/string-helpers";
 import { cacheLife, cacheTag } from "next/cache";
 
 export async function FeaturedArticlesNext() {
-  "use cache";
+  "use cache: remote";
   cacheTag("featured-articles");
   cacheLife("hours");
 

@@ -3,7 +3,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { getBreakingNewsServer } from "@/services/server-side/get-breaking-news";
 
 export async function BreakingNewsNext() {
-  "use cache";
+  "use cache: remote";
   cacheTag("breaking-news");
   cacheLife("minutes");
 

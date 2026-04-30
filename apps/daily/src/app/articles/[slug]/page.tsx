@@ -84,7 +84,7 @@ async function ArticleDetailContent({
   paid,
   slug,
 }: ArticleDetailContentProps) {
-  "use cache";
+  "use cache: remote";
 
   cacheTag(
     "article-page",

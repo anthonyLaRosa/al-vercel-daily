@@ -7,7 +7,7 @@ export async function NavLinksNext({
 }: {
   orientation?: "horizontal" | "vertical";
 }) {
-  "use cache";
+  "use cache: remote";
   cacheTag("nav-links");
   cacheLife("hours");
   const categories = await getCategories();
