@@ -5,7 +5,7 @@ import type { Paywall } from "@/interfaces/Paywall.interface";
 
 export const setPaywall = async () => {
   const cookieStore = await cookies();
-  const cookie = cookieStore.get("paid") || "preview";
+  const cookie = cookieStore.get("paid")?.value || "preview";
   const newValue = cookie === "preview" ? "full" : "preview";
   cookieStore.set("paid", newValue, {
     maxAge: 60 * 60 * 24, // 1 days
