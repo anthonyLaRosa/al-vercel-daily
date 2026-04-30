@@ -2,11 +2,17 @@
 
 import { GlassPanel } from "@repo/ui/atoms/glass-panel";
 import { Button } from "@repo/ui/atoms/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import type React from "react";
 
 export function MobileNavNext({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <div className="md:hidden">

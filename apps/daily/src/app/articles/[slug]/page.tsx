@@ -43,6 +43,11 @@ export async function generateMetadata({
 
   return {
     title: product.data?.title || "Article",
+    description: product.data?.excerpt,
+    openGraph: {
+      title: product.data?.title || "Article",
+      description: product.data?.excerpt,
+    },
   };
 }
 

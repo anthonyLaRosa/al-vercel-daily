@@ -10,6 +10,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Search",
+  openGraph: {
+    title: "Search",
+    description: "Search for articles",
+  },
 };
 
 export interface SearchPageProps {
